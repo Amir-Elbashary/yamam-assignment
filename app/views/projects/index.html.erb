@@ -1,0 +1,10 @@
+<main class="container">
+  <div class="header">
+    <h1>Projects</h1>
+    <%= link_to "New Project",
+                new_project_path,
+                class: "btn btn--primary" %>
+  </div>
+</main>
+
+<%= render @projects %>
