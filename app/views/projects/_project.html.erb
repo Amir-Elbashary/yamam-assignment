@@ -1,0 +1,15 @@
+<%= turbo_frame_tag project do %>
+  <div class="project">
+    <%= link_to project.name,
+                project_path(project),
+                data: { turbo_frame: "_top" }%>
+    <div class="project__actions">
+      <%= link_to 'Delete', project_path(project),
+                  data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+      <%= link_to "Edit",
+                  edit_project_path(project),
+                  class: "btn btn--light" %>
+    </div>
+  </div>
+  <br/>
+<% end %>
