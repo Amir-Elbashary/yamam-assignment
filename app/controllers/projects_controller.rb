@@ -16,7 +16,11 @@ class ProjectsController < ApplicationController
 
     if @project.save
       respond_to do |format|
-        format.html { redirect_to projects_path, notice: "Quote was successfully created." }
+        format.html {
+          redirect_to projects_path,
+          notice: "Quote was successfully created."
+        }
+
         format.turbo_stream
       end
     else
@@ -38,7 +42,11 @@ class ProjectsController < ApplicationController
     @project.destroy
 
     respond_to do |format|
-      format.html { redirect_to projects_path, notice: "Project was successfully destroyed." }
+      format.html {
+        redirect_to projects_path,
+        notice: "Project was successfully destroyed."
+      }
+
       format.turbo_stream
     end
   end
