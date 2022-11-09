@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: %i[show edit update destroy]
 
   def index
-    @projects = Project.all
+    @projects = Project.ordered
   end
 
   def show; end
@@ -15,9 +15,12 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
 
     if @project.save
-      redirect_to projects_path, notice: "Project was successfully created."
+      respond_to do |format|
+        format.html { redirect_to projects_path, notice: "Quote was successfully created." }
+        format.turbo_stream
+      end
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -34,7 +37,10 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
 
-    redirect_to projects_path, notice: "Project was successfully destroyed."
+    respond_to do |format|
+      format.html { redirect_to projects_path, notice: "Project was successfully destroyed." }
+      format.turbo_stream
+    end
   end
 
   private

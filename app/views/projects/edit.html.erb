@@ -5,5 +5,7 @@
     <h1>Edit project</h1>
   </div>
 
-  <%= render "form", project: @project %>
+  <%= turbo_frame_tag @project do %>
+    <%= render "form", project: @project %>
+  <% end %>
 </main>
