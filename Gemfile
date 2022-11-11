@@ -13,6 +13,7 @@ gem "bootsnap", require: false
 gem 'dotenv-rails', '~> 2.8', '>= 2.8.1'
 gem 'simple_form'
 gem "tailwindcss-rails", "~> 2.0"
+gem 'activerecord-postgis-adapter'
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
