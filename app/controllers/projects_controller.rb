@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
       respond_to do |format|
         format.html {
           redirect_to projects_path,
-          notice: "Quote was successfully created."
+          notice: "Project was successfully created."
         }
 
         format.turbo_stream
