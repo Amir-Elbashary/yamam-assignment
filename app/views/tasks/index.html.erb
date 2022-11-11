@@ -1,0 +1,21 @@
+<%= turbo_stream_from "tasks" %>
+
+<main class="container">
+    <div class="header">
+      <h1>Tasks</h1>
+      <%= link_to "New Task",
+                  new_task_path,
+                  class: "btn btn--primary",
+                  data: { turbo_frame: dom_id(Task.new) }%>
+    </div>
+</main>
+
+<%= turbo_frame_tag Task.new %>
+
+<br/>
+<hr>
+<br/>
+
+<%= turbo_frame_tag "tasks" do %>
+  <%= render @tasks %>
+<% end %>
