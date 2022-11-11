@@ -7,7 +7,10 @@
 
   <%= f.input :project_id, collection: @projects, label_method: :name, value_method: :id %>
   <%= f.input :title, input_html: { autofocus: true } %>
+  <%= f.rich_text_area :description %>
   <%= f.input :user_id, collection: @users, label_method: :full_name, value_method: :id %>
+  <%= f.file_field :document %>
+  <br/>
   <%= link_to "Cancel", tasks_path, class: "btn btn--light" %>
   <%= f.submit class: "btn btn--secondary" %>
 <% end %>

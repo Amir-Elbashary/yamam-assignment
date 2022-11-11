@@ -37,7 +37,7 @@ gem "redis", "~> 4.0"
 
 # =============== Images Related Gems ===============
 # Use Active Storage variants
-# gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.2"
 
 # Carrierwave Gems
 # gem 'carrierwave'

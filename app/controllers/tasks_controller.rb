@@ -1,6 +1,9 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[show edit update destroy]
   before_action :set_dependencies, only: %i[new edit]
+  before_action do
+    ActiveStorage::Current.host = request.base_url
+  end
 
   def index
     @tasks = Task.ordered
@@ -59,7 +62,7 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:project_id, :user_id, :title)
+    params.require(:task).permit(:project_id, :user_id, :title, :description, :document)
   end
 
   def set_dependencies

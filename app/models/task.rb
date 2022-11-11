@@ -1,5 +1,7 @@
 class Task < ApplicationRecord
   broadcasts_to ->(task) { "tasks" }, inserts_by: :prepend
+  has_rich_text :description
+  has_one_attached :document
 
   validates :title, presence: true
 
