@@ -1,0 +1,12 @@
+<main class="container">
+  <%= link_to sanitize("&larr; Back to tasks"), tasks_path %>
+  <div class="header">
+    <h1>
+      <%= @task.title %>
+
+      <br/><br/>
+      <p>Link to download</p>
+      <%= button_to 'Download',  @task.document.url, method: :get %>
+    </h1>
+  </div>
+</main>

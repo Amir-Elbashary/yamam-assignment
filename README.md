@@ -1,24 +1,31 @@
-# README
+# Yamam Assignment
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+** How to run with docker
+Will be implemented on the final phase
 
-Things you may want to cover:
 
-* Ruby version
+** How to run without Docker
 
-* System dependencies
+In order to run this Application locally you want to make sure:
 
-* Configuration
+1- PG Dependencies are installed on your system
+2- Redis server installed
 
-* Database creation
+How to run the Application:
 
-* Database initialization
+1- Clone the project
 
-* How to run the test suite
+2- Use .env.exmaple to add your env variables
 
-* Services (job queues, cache servers, search engines, etc.)
+3- Run 'bundle install'
 
-* Deployment instructions
+4- Run 'rails db:create'
 
-* ...
+5- Run 'rails db:migrate'
+
+6- Run 'rails s' or './bin/dev' to run it with tailwindcss
+
+Please note that 'bundle exec' might be needed if you have different versions of bundlers within the same ruby version
+
+Best Regards,
+Amir Adel
