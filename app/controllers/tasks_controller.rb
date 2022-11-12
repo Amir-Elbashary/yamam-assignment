@@ -45,14 +45,7 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
 
-    respond_to do |format|
-      format.html {
-        redirect_to tasks_path,
-        notice: "Task was successfully destroyed."
-      }
-
-      format.turbo_stream
-    end
+    redirect_to tasks_path, notice: "Task was successfully deleted"
   end
 
   private
@@ -62,7 +55,7 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:project_id, :user_id, :title, :description, :document)
+    params.require(:task).permit(:project_id, :user_id, :title, :description, :priority, :document)
   end
 
   def set_dependencies
