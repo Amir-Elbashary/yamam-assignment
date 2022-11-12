@@ -1,15 +1,19 @@
 <%= turbo_frame_tag task do %>
-  <div class="task">
-    <%= link_to task.title,
-                task_path(task),
-                data: { turbo_frame: "_top" }%>
-    <div class="task__actions">
+  <tr>
+    <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+<%= link_to task.title,
+    task_path(task),
+    data: { turbo_frame: "_top" }%>
+    </td>
+    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= task.user&.full_name %></td>
+    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= task.priority.titleize %></td>
+    <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
       <%= link_to 'Delete', task_path(task),
-                  data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
-      <%= link_to "Edit",
-                  edit_task_path(task),
-                  class: "btn btn--light" %>
-    </div>
-  </div>
-  <br/>
+        class: 'inline-flex items-center rounded border border-transparent bg-indigo-100 px-2.5 py-1.5 text-xs font-medium text-indigo-700 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2',
+      data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+<%= link_to "Edit",
+      edit_task_path(task),
+      class: 'inline-flex items-center rounded border border-transparent bg-indigo-100 px-2.5 py-1.5 text-xs font-medium text-indigo-700 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2' %>
+    </td>
+  </tr>
 <% end %>

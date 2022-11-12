@@ -5,12 +5,30 @@
     </div>
   <% end %>
 
-  <%= f.input :project_id, collection: @projects, label_method: :name, value_method: :id %>
-  <%= f.input :title, input_html: { autofocus: true } %>
-  <%= f.rich_text_area :description %>
-  <%= f.input :user_id, collection: @users, label_method: :full_name, value_method: :id %>
-  <%= f.file_field :document %>
+  <%= f.input :project_id, collection: @projects, label_method: :name, value_method: :id ,
+              class: 'block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm',
+              label_html: { class: 'block text-sm font-medium text-gray-700' }%>
+  <%= f.input :title,
+              class: 'block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm',
+              input_html: { autofocus: true },
+              label_html: { class: 'block text-sm font-medium text-gray-700' }%>
+  <% if action_name == 'edit' %>
+    <%= f.rich_text_area :description %>
+  <% end %>
+  <%= f.input :user_id, collection: @users, label_method: :full_name, value_method: :id,
+
+              class: 'block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm',
+              label_html: { class: 'block text-sm font-medium text-gray-700' }%>
+  <%= f.input :priority, collection: ['medium', 'low', 'high'],
+
+              class: 'block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm',
+              label_html: { class: 'block text-sm font-medium text-gray-700' }%>
+            <br/>
+  <%= f.file_field :document,
+              class: 'block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm',
+              label_html: { class: 'block text-sm font-medium text-gray-700' }%>
   <br/>
-  <%= link_to "Cancel", tasks_path, class: "btn btn--light" %>
-  <%= f.submit class: "btn btn--secondary" %>
+  <%= link_to "Cancel", tasks_path,
+    class: "inline-flex items-center rounded-full border border-transparent bg-indigo-600 px-3.5 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" %>
+  <%= f.submit class: "inline-flex items-center rounded-full border border-transparent bg-indigo-600 px-3.5 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" %>
 <% end %>

@@ -1,4 +1,5 @@
 class Task < ApplicationRecord
+  enum priority: %i[medium low high]
   broadcasts_to ->(task) { "tasks" }, inserts_by: :prepend
   has_rich_text :description
   has_one_attached :document

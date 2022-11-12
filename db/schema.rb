@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_11_183847) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_12_133652) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
@@ -66,6 +66,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_11_183847) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.geography "task_lonlat", limit: {:srid=>4326, :type=>"st_point", :geographic=>true}
+    t.integer "priority", default: 0
+    t.index ["priority"], name: "index_tasks_on_priority"
     t.index ["project_id"], name: "index_tasks_on_project_id"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end

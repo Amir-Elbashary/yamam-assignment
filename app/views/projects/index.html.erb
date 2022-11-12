@@ -1,21 +1,30 @@
 <%= turbo_stream_from "projects" %>
 
-<main class="container">
-    <div class="header">
+<br/>
+
+<div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+    <div>
       <h1>Projects</h1>
+    </div>
+    <div>
       <%= link_to "New Project",
                   new_project_path,
-                  class: "btn btn--primary",
+                  class: "inline-flex items-center rounded-full border border-transparent bg-indigo-600 px-3.5 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2",
                   data: { turbo_frame: dom_id(Project.new) }%>
     </div>
-</main>
+  </div>
 
-<%= turbo_frame_tag Project.new %>
 
-<br/>
-<hr>
-<br/>
+  <div>
+    <%= turbo_frame_tag Project.new %>
 
-<%= turbo_frame_tag "projects" do %>
-  <%= render @projects %>
-<% end %>
+    <br/>
+    <hr>
+    <br/>
+
+    <%= turbo_frame_tag "projects" do %>
+      <%= render @projects %>
+    <% end %>
+  </div>
+</div>
