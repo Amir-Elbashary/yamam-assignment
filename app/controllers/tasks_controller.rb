@@ -6,7 +6,14 @@ class TasksController < ApplicationController
   end
 
   def index
-    @tasks = Task.ordered
+    @tasks = current_user.tasks.ordered
+    @locations = []
+
+    @tasks.each do |task|
+      point = task.task_lonlat
+
+      @locations << [task.title, point.longitude, point.latitude]
+    end
   end
 
   def show; end
@@ -55,7 +62,7 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:project_id, :user_id, :title, :description, :priority, :document)
+    params.require(:task).permit(:project_id, :user_id, :title, :description, :priority, :task_lonlat, :document)
   end
 
   def set_dependencies
