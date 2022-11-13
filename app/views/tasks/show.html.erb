@@ -3,10 +3,23 @@
   <div class="header">
     <h1>
       <%= @task.title %>
-
-      <br/><br/>
-      <p>Link to download</p>
-      <%= button_to 'Download',  @task.document.url, method: :get %>
     </h1>
+
+    <br/><br/>
+    <p>Link to download</p>
+    <%= button_to 'Download',  @task.document.url, method: :get %>
+
+    <div id="map"></div>
   </div>
 </main>
+
+<script>
+  var map = L.map('map').setView([30.064806, 31.46174], 13);
+
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 19,
+  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+    var marker = L.marker([<%= @task.task_lonlat.longitude %>, <%= @task.task_lonlat.latitude %>]).addTo(map);
+</script>
